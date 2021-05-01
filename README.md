@@ -13,6 +13,4 @@ Wie zum Beispiel hier:
 
 ![image](https://user-images.githubusercontent.com/76885566/116797438-ed46b980-aae5-11eb-9168-65bf2d931b1c.png)
 
-API nutzung, Threading, Hotkeylistening, eigenes Modul für die lokale clientapi
-
 Benutzt wurden lokale und öffentliche API's, lesen von Applikationsdaten (Fensternamen), Hotkeylistening und ein eigenes Modul für eine lokale Clientapi.
