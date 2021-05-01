@@ -6,7 +6,7 @@ Dieses Projekt erlaubt personialisierte Game activities wie diese hier:
 
 ![image](https://user-images.githubusercontent.com/76885566/116797452-0cdde200-aae6-11eb-9000-786a6af5a438.png)
 
-Es wurden jedoch auch selbst aktualisierende Program spezifische Daten eingebaut
+Es wurden jedoch auch selbst aktualisierende Programm spezifische Daten eingebaut
 Wie zum Beispiel hier:
 
 ![image](https://user-images.githubusercontent.com/76885566/116797415-dbfdad00-aae5-11eb-9805-7c9e631b3673.png)
