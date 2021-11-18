@@ -17,6 +17,7 @@ with open('about.txt', "r") as file:
 
 
 def Update():
+    changelog = None
     os.mkdir("temp")
     for file in os.listdir(os.getcwd()+"\\modules"):
         
@@ -46,16 +47,19 @@ def Update():
     os.remove("main.zip")
     time.sleep(0.3)
     for file in os.listdir(os.getcwd()+"\\rpc-main"):
-        if file in ['README.md','updater.py']:
-            print(f"Removing {file}")
-            os.remove(os.getcwd()+"\\rpc-main\\"+file)
-            time.sleep(0.1)
-        if file == 'changelog.txt':
-            with open(file,'r') as f:
-                changelogVersion = f.readline().rstrip()
-                print(changelogVersion)
-                if changelogVersion > rawBaseVersion:
-                    changelog = f.read()
+        if file in ['README.md','updater.py','changelog.txt']:
+            if file == 'changelog.txt':
+                with open(os.getcwd()+"\\rpc-main\\"+file,'r') as f:
+                    changelogVersion = f.readline().rstrip()
+                    print(changelogVersion)
+                    if changelogVersion > rawBaseVersion:
+                        changelog = f.read()
+                print(f"Removing {file}")
+                os.remove(os.getcwd()+"\\rpc-main\\"+file)
+            else:
+                print(f"Removing {file}")
+                os.remove(os.getcwd()+"\\rpc-main\\"+file)
+                time.sleep(0.1)
         else:
             print(f"Moving {file}")
             os.rename(os.getcwd()+"\\rpc-main\\"+file, os.getcwd()+"\\"+file)
@@ -76,7 +80,8 @@ def Update():
     os.rmdir('temp')
     print('Removing temp files')
     if changelog:
-        input(changelog)
+        input(' \n \n \n \n '+changelog)
+        exit()
     
 
 if cloudVersion > baseVersion:
