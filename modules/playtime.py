@@ -2,8 +2,23 @@ from io import UnsupportedOperation
 from unicodedata import normalize
 import json
 
+
+def verifyGame(variable):
+    if isinstance(variable, str):
+        string = True
+    if variable.len() > 1:
+        size = True
+    
+
+def verifyTime(variable):
+    if isinstance(variable, int):
+        integer = True
+    if variable > 0:
+        size = True
+
+
 def write(game, time):
-    if isinstance(game, str) and isinstance(time, int):
+    if verifyGame(game) and verifyTime(time):
 
         game = normalize('NFC', game)
 
@@ -49,7 +64,7 @@ def write(game, time):
             print('finished')
 
     else:
-        return UnsupportedOperation
+        return ValueError
 
 def read(game):
 
