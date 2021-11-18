@@ -67,6 +67,6 @@ def read(game):
             return seconds
 
         else:
-            return None
+            return 0
 
 

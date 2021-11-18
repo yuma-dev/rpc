@@ -243,8 +243,9 @@ def getData(openwindow,openwindowtitle,playing,dataName,largeimage,largetext,sta
         openwindow = '🎮: VALORANT'
         largeimage = 'valorant'
         dataName = "Valorant"
-        ptime = readable.time(seconds=playtime.read(dataName), granularity=2, limit='h', language='en')
-        largetext = f'Tracked Time : {ptime} '
+        if playtime.read(dataName):
+            ptime = readable.time(seconds=playtime.read(dataName), granularity=2, limit='h', language='en')
+            largetext = f'Tracked Time : {ptime} '
 
     elif openwindow in ['WhatsApp','Ferdi']:
         showplaying = False

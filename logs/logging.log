@@ -2162,3 +2162,196 @@
 2021-11-18 03:30:03,154 | INFO  -  finished
 2021-11-18 03:30:03,154 | INFO  -  
 
+2021-11-18 17:02:28,247 | INFO  -  5928 hours, 58 minutes
+2021-11-18 17:02:28,247 | INFO  -  
+
+2021-11-18 17:02:28,612 | INFO  -  Done!
+2021-11-18 17:02:28,648 | DEBUG  -  Using proactor: IocpProactor
+2021-11-18 17:02:35,343 | INFO  -  Activated
+2021-11-18 17:02:35,343 | INFO  -  
+
+2021-11-18 17:02:41,519 | INFO  -  Activated
+2021-11-18 17:02:41,520 | INFO  -  
+
+2021-11-18 17:02:47,482 | INFO  -  in customAddons: pythonw
+2021-11-18 17:02:47,482 | INFO  -  
+
+2021-11-18 17:02:47,482 | INFO  -  in officialAddons: pythonw
+2021-11-18 17:02:47,482 | INFO  -  
+
+2021-11-18 17:02:47,482 | INFO  -  pythonw 30
+2021-11-18 17:02:47,482 | INFO  -  
+
+2021-11-18 17:02:47,487 | INFO  -  finished
+2021-11-18 17:02:47,488 | INFO  -  
+
+2021-11-18 17:03:17,593 | INFO  -  Looped!
+2021-11-18 17:03:17,595 | INFO  -  in customAddons: Discord
+2021-11-18 17:03:17,595 | INFO  -  
+
+2021-11-18 17:03:17,595 | INFO  -  in officialAddons: Discord
+2021-11-18 17:03:17,595 | INFO  -  
+
+2021-11-18 17:03:17,595 | INFO  -  Discord 30
+2021-11-18 17:03:17,595 | INFO  -  
+
+2021-11-18 17:03:17,595 | INFO  -  finished
+2021-11-18 17:03:17,595 | INFO  -  
+
+2021-11-18 17:03:47,607 | INFO  -  Looped!
+2021-11-18 17:03:47,609 | INFO  -  in customAddons: Discord
+2021-11-18 17:03:47,609 | INFO  -  
+
+2021-11-18 17:03:47,609 | INFO  -  in officialAddons: Discord
+2021-11-18 17:03:47,609 | INFO  -  
+
+2021-11-18 17:03:47,609 | INFO  -  Discord 30
+2021-11-18 17:03:47,609 | INFO  -  
+
+2021-11-18 17:03:47,609 | INFO  -  finished
+2021-11-18 17:03:47,609 | INFO  -  
+
+2021-11-18 17:04:17,624 | INFO  -  Looped!
+2021-11-18 17:04:17,625 | INFO  -  in customAddons: Discord
+2021-11-18 17:04:17,625 | INFO  -  
+
+2021-11-18 17:04:17,625 | INFO  -  in officialAddons: Discord
+2021-11-18 17:04:17,625 | INFO  -  
+
+2021-11-18 17:04:17,625 | INFO  -  Discord 30
+2021-11-18 17:04:17,625 | INFO  -  
+
+2021-11-18 17:04:17,626 | INFO  -  finished
+2021-11-18 17:04:17,626 | INFO  -  
+
+2021-11-18 17:04:47,638 | INFO  -  Looped!
+2021-11-18 17:04:47,639 | INFO  -  in customAddons: Discord
+2021-11-18 17:04:47,639 | INFO  -  
+
+2021-11-18 17:04:47,639 | INFO  -  in officialAddons: Discord
+2021-11-18 17:04:47,639 | INFO  -  
+
+2021-11-18 17:04:47,639 | INFO  -  Discord 30
+2021-11-18 17:04:47,639 | INFO  -  
+
+2021-11-18 17:04:47,640 | INFO  -  finished
+2021-11-18 17:04:47,640 | INFO  -  
+
+2021-11-18 17:05:17,650 | INFO  -  Looped!
+2021-11-18 17:05:17,652 | INFO  -  in customAddons: Discord
+2021-11-18 17:05:17,652 | INFO  -  
+
+2021-11-18 17:05:17,652 | INFO  -  in officialAddons: Discord
+2021-11-18 17:05:17,652 | INFO  -  
+
+2021-11-18 17:05:17,652 | INFO  -  Discord 30
+2021-11-18 17:05:17,652 | INFO  -  
+
+2021-11-18 17:05:17,652 | INFO  -  finished
+2021-11-18 17:05:17,652 | INFO  -  
+
+2021-11-18 17:05:47,658 | INFO  -  Looped!
+2021-11-18 17:05:47,660 | INFO  -  in customAddons: Discord
+2021-11-18 17:05:47,660 | INFO  -  
+
+2021-11-18 17:05:47,660 | INFO  -  in officialAddons: Discord
+2021-11-18 17:05:47,661 | INFO  -  
+
+2021-11-18 17:05:47,661 | INFO  -  Discord 30
+2021-11-18 17:05:47,661 | INFO  -  
+
+2021-11-18 17:05:47,661 | INFO  -  finished
+2021-11-18 17:05:47,661 | INFO  -  
+
+2021-11-18 17:06:17,675 | INFO  -  Looped!
+2021-11-18 17:06:17,676 | INFO  -  in customAddons: Discord
+2021-11-18 17:06:17,676 | INFO  -  
+
+2021-11-18 17:06:17,676 | INFO  -  in officialAddons: Discord
+2021-11-18 17:06:17,676 | INFO  -  
+
+2021-11-18 17:06:17,676 | INFO  -  Discord 30
+2021-11-18 17:06:17,676 | INFO  -  
+
+2021-11-18 17:06:17,677 | INFO  -  finished
+2021-11-18 17:06:17,677 | INFO  -  
+
+2021-11-18 17:06:47,689 | INFO  -  Looped!
+2021-11-18 17:06:47,692 | INFO  -  in customAddons: Discord
+2021-11-18 17:06:47,692 | INFO  -  
+
+2021-11-18 17:06:47,692 | INFO  -  in officialAddons: Discord
+2021-11-18 17:06:47,692 | INFO  -  
+
+2021-11-18 17:06:47,692 | INFO  -  Discord 30
+2021-11-18 17:06:47,692 | INFO  -  
+
+2021-11-18 17:06:47,693 | INFO  -  finished
+2021-11-18 17:06:47,693 | INFO  -  
+
+2021-11-18 17:07:17,695 | INFO  -  Looped!
+2021-11-18 17:07:17,699 | INFO  -  in customAddons: Discord
+2021-11-18 17:07:17,699 | INFO  -  
+
+2021-11-18 17:07:17,699 | INFO  -  in officialAddons: Discord
+2021-11-18 17:07:17,699 | INFO  -  
+
+2021-11-18 17:07:17,699 | INFO  -  Discord 30
+2021-11-18 17:07:17,699 | INFO  -  
+
+2021-11-18 17:07:18,778 | INFO  -  Exception ignored in: 
+2021-11-18 17:07:18,778 | INFO  -  <function Variable.__del__ at 0x000001285B7858B0>
+2021-11-18 17:07:18,778 | INFO  -  
+
+2021-11-18 17:07:18,778 | INFO  -  Traceback (most recent call last):
+
+2021-11-18 17:07:18,778 | INFO  -    File "C:\Users\Fabi\AppData\Local\Programs\Python\Python39\lib\tkinter\__init__.py", line 363, in __del__
+
+2021-11-18 17:07:18,788 | INFO  -      
+2021-11-18 17:07:18,788 | INFO  -  if self._tk.getboolean(self._tk.call("info", "exists", self._name)):
+2021-11-18 17:07:18,788 | INFO  -  
+
+2021-11-18 17:07:18,788 | INFO  -  RuntimeError
+2021-11-18 17:07:18,788 | INFO  -  : 
+2021-11-18 17:07:18,788 | INFO  -  main thread is not in main loop
+2021-11-18 17:07:18,788 | INFO  -  
+
+2021-11-18 17:52:47,174 | INFO  -  5928 hours, 58 minutes
+2021-11-18 17:52:47,174 | INFO  -  
+
+2021-11-18 17:52:47,602 | INFO  -  Done!
+2021-11-18 17:52:47,614 | DEBUG  -  Using proactor: IocpProactor
+2021-11-18 17:52:48,452 | INFO  -  in customAddons: VALORANT-Win64-Shipping
+2021-11-18 17:52:48,452 | INFO  -  
+
+2021-11-18 17:52:48,452 | INFO  -  in officialAddons: VALORANT-Win64-Shipping
+2021-11-18 17:52:48,452 | INFO  -  
+
+2021-11-18 17:52:48,452 | INFO  -  <_io.TextIOWrapper name='data/database.json' mode='r' encoding='cp1252'>
+2021-11-18 17:52:48,452 | INFO  -  
+
+2021-11-18 17:52:48,453 | CRITICAL  -  Expecting value: line 1 column 1 (char 0)
+2021-11-18 17:52:48,453 | CRITICAL  -  DEBUG : <class 'json.decoder.JSONDecodeError'> rpc.pyw in line 320
+2021-11-18 17:52:56,269 | INFO  -  Activated
+2021-11-18 17:52:56,269 | INFO  -  
+
+2021-11-18 18:07:47,594 | WARNING  -  Resetting...
+2021-11-18 18:07:47,745 | INFO  -  5928 hours, 58 minutes
+2021-11-18 18:07:47,745 | INFO  -  
+
+2021-11-18 18:07:48,134 | INFO  -  Done!
+2021-11-18 18:07:48,158 | DEBUG  -  Using proactor: IocpProactor
+2021-11-18 18:07:48,407 | INFO  -  in customAddons: python
+2021-11-18 18:07:48,407 | INFO  -  
+
+2021-11-18 18:07:48,407 | INFO  -  in officialAddons: python
+2021-11-18 18:07:48,407 | INFO  -  
+
+2021-11-18 18:07:48,407 | INFO  -  python 30
+2021-11-18 18:07:48,407 | INFO  -  
+
+2021-11-18 18:07:48,407 | CRITICAL  -  Expecting value: line 1 column 1 (char 0)
+2021-11-18 18:07:48,407 | CRITICAL  -  DEBUG : <class 'json.decoder.JSONDecodeError'> rpc.pyw in line 351
+2021-11-18 18:07:52,926 | INFO  -  Activated
+2021-11-18 18:07:52,926 | INFO  -  
+

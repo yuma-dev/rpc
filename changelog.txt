@@ -1,3 +1,5 @@
-2.1.4
-- updated the updater
-- testing
+2.1.5
+MODULES=modules.txt
+- updated the updater again
+- added shortcut creation for autostart into the installer
+- fixed playtime throwing error
