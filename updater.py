@@ -100,11 +100,14 @@ def Update():
 
                 print(f"Removing {file}")
                 os.remove(os.getcwd()+"\\rpc-main\\"+file)
+                time.sleep(0.3)
 
             if file == 'modules.txt':
 
                 if moduleUpdates(os.getcwd()+"\\rpc-main\\"+file) == 'Finished':
-                    return
+                    os.remove(os.getcwd()+"\\rpc-main\\"+file)
+                    print(f"Removing {file} after finishing")
+                    time.sleep(0.3)
 
             else:
                 if file not in ['modules.txt','changelog.txt']:
@@ -115,6 +118,7 @@ def Update():
         else:
 
             print(f"Moving {file}")
+            time.sleep(0.3)
             os.rename(os.getcwd()+"\\rpc-main\\"+file, os.getcwd()+"\\"+file)
             time.sleep(0.1)
 
