@@ -96,7 +96,7 @@ def Update():
 
     for file in os.listdir(os.getcwd()+"\\"+"data"):
         
-        if file in ['database.json']:
+        if file in ['database.json','config.ini']:
             print(f"Moving {file} to temp")
             os.rename(os.getcwd()+"\\data\\"+file, os.getcwd()+"\\temp\\"+file)
             time.sleep(0.1)
@@ -171,9 +171,9 @@ def Update():
             time.sleep(0.1)
 
 
-    print('Removing downloaded database')    
+    print('Removing downloaded database and config')    
     for file in os.listdir(os.getcwd()+"\\data"):
-        if file in ['database.json']:
+        if file in ['database.json', 'config.ini']:
             os.remove(os.getcwd()+"\\data\\"+file)
             time.sleep(0.1)
 
@@ -181,11 +181,11 @@ def Update():
     print('Moving saved customAddons.py and database back')
     for file in os.listdir(os.getcwd()+"\\temp"):
         if file in ['customAddons.py']:
-            print(f"Moving {file} to temp")
+            print(f"Moving {file} from temp")
             os.rename(os.getcwd()+"\\temp\\"+file, os.getcwd()+"\\modules\\"+file)
             time.sleep(0.1)
-        if file in ['database.json']:
-            print(f"Moving {file} to temp")
+        if file in ['database.json','config.ini']:
+            print(f"Moving {file} from temp")
             os.rename(os.getcwd()+"\\temp\\"+file, os.getcwd()+"\\data\\"+file)
             time.sleep(0.1)
 

@@ -1,9 +1,2 @@
-2.2.0
-2.1.9:
-- fixed uac
-- fixed discord not being open closing the script
-- added pyuac module
-- fixed updater uselessly restarting after installing new modules
-2.2.0:
-- added killrpc.py for updater to kill rpc before updating
-- updater now saves your database
+2.2.1
+- added config system

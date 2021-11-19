@@ -21,7 +21,7 @@ if pyuac.isUserAdmin():
     logging.basicConfig(level=logging.DEBUG, filename='logs/logging.log', format = '%(asctime)s | %(levelname)s  -  %(message)s')
     try:
         #imports
-        import wx.adv,wx,atexit,psutil,threading,time,win32gui,win32process,os,traceback,json,easygui , tkinter as tk,pypresence
+        import wx.adv,wx,atexit,psutil,threading,time,win32gui,win32process,os,traceback,json,easygui , tkinter as tk,pypresence,configparser
         from modules import playtime,readable,yasuo,officialAddons,customAddons #custom module for client data
         from datetime import datetime #get the current time for logging errors
         from pynput import keyboard #check for hotkey
@@ -33,6 +33,9 @@ if pyuac.isUserAdmin():
         from tkinter.scrolledtext import *
 
         #DEFAULTING
+        config = configparser.ConfigParser()
+        config.read("data/config.ini")
+        config = config['rpc']
         icon_path = "sprites/icon.ico"
         toast = ToastNotifier()
         global globaldetails,globalstate,globallarge_image,globallarge_text,globalsmall_image,globalsmall_text,loops,looptime
@@ -46,7 +49,8 @@ if pyuac.isUserAdmin():
         globalsmall_text = None
         loops = 0
         start_time = time.time()
-        looptime = 30
+        looptime = int(config['LoopTime'])
+
 
         def atStart():
             with open('logs/status.txt', 'w') as f:
@@ -228,16 +232,17 @@ if pyuac.isUserAdmin():
 
         def toggleHidden():
             global hidden
-            if hidden is True: #set hidden variable to False if it's already True and give Windows notification
-                toast.show_toast("rpc.pyw","no longer afk!",duration=3,icon_path=icon_path,threaded=True)
-                hidden = False
-                hiddenText = 'Disable AFK'
-                logging.info("Disabled AFK mode")
-            elif hidden is False: #set hidden variable to True if it's already False and give Windows notification
-                toast.show_toast("rpc.pyw","now afk!",duration=3,icon_path=icon_path,threaded=True)
-                hidden = True
-                hiddenText = 'Enable AFK'
-                logging.info("Enabled AFK mode")
+            if config['AFKToggle'] == 'yes':
+                if hidden is True: #set hidden variable to False if it's already True and give Windows notification
+                    toast.show_toast("rpc.pyw","no longer afk!",duration=3,icon_path=icon_path,threaded=True)
+                    hidden = False
+                    hiddenText = 'Disable AFK'
+                    logging.info("Disabled AFK mode")
+                elif hidden is False: #set hidden variable to True if it's already False and give Windows notification
+                    toast.show_toast("rpc.pyw","now afk!",duration=3,icon_path=icon_path,threaded=True)
+                    hidden = True
+                    hiddenText = 'Enable AFK'
+                    logging.info("Enabled AFK mode")
         
 
         def reset():
@@ -251,10 +256,12 @@ if pyuac.isUserAdmin():
 
 
         #thread hotkeylistener and timer
-        rTimer = threading.Thread(target=resettimer)
-        rTimer.start()
-        sTray = threading.Thread(target=startTray)
-        sTray.start()
+        if config['ResetTimer'] == 'yes':
+            rTimer = threading.Thread(target=resettimer)
+            rTimer.start()
+        if config['SystemTray'] == 'yes':
+            sTray = threading.Thread(target=startTray)
+            sTray.start()
         logging.info('Done!')
 
             
@@ -263,7 +270,7 @@ if pyuac.isUserAdmin():
             try:
                 
                 #connect to application via id on pipe 0
-                client_id = '828958778866270238' #set discord application id
+                client_id = str(config['ClientID']) #set discord application id
                 RPC = pypresence.Presence(client_id) #set the client with id and define what pipe
                 RPC.connect() #connect to the client
 
@@ -274,22 +281,22 @@ if pyuac.isUserAdmin():
 
                     #get hardware usage (Disabled)
                     #cpu_per = round(psutil.cpu_percent(),1)
+                    if config['Spotify'] == 'yes':
+                        try: #will succeed if a song is playing
+                            playing = True
+                            image = "spotify"
+                            statetext = "♫ 𝔩𝔦𝔰𝔱𝔢𝔫𝔦𝔫𝔤 𝔱𝔬 𝔪𝔲𝔰𝔦𝔠 ♫"
+                            largetext = "The open program has no set Image"
+                            largeimage = "unknown"
+                            state =spotify.song()+" ~ "+spotify.artist()
 
-                    try: #will succeed if a song is playing
-                        playing = True
-                        image = "spotify"
-                        statetext = "♫ 𝔩𝔦𝔰𝔱𝔢𝔫𝔦𝔫𝔤 𝔱𝔬 𝔪𝔲𝔰𝔦𝔠 ♫"
-                        largetext = "The open program has no set Image"
-                        largeimage = "unknown"
-                        state =spotify.song()+" ~ "+spotify.artist()
-
-                    except Exception: #will trigger if no song is playing
-                        playing = False
-                        image = None #"heart"
-                        state = None #"Λ 24.02.2020"
-                        statetext = None #"𝗖𝗣𝗨: "+str(cpu_per)+"%"
-                        largetext = "The open program has no set Image"
-                        largeimage = "unknown"
+                        except Exception: #will trigger if no song is playing
+                            playing = False
+                            image = None #"heart"
+                            state = None #"Λ 24.02.2020"
+                            statetext = None #"𝗖𝗣𝗨: "+str(cpu_per)+"%"
+                            largetext = "The open program has no set Image"
+                            largeimage = "unknown"
 
                     #get process id
                     w=win32gui #shortversion
@@ -311,8 +318,10 @@ if pyuac.isUserAdmin():
 
                     #if its not hidden
                     if not hidden:
-                        openwindow,dataName,largeimage,largetext,state,image,showplaying = customAddons.getData(openwindow,openwindowtitle,playing,dataName,largeimage,largetext,state,image,showplaying) 
-                        openwindow,dataName,largeimage,largetext,state,image,showplaying = officialAddons.getData(openwindow,openwindowtitle,playing,dataName,largeimage,largetext,state,image,showplaying)
+                        if config['CustomModules'] == 'yes':
+                            openwindow,dataName,largeimage,largetext,state,image,showplaying = customAddons.getData(openwindow,openwindowtitle,playing,dataName,largeimage,largetext,state,image,showplaying)
+                        if config['OfficialModules'] == 'yes': 
+                            openwindow,dataName,largeimage,largetext,state,image,showplaying = officialAddons.getData(openwindow,openwindowtitle,playing,dataName,largeimage,largetext,state,image,showplaying)
         
 
 
@@ -331,7 +340,8 @@ if pyuac.isUserAdmin():
                     
                     #if it's a not defined window, display it this way:
                     if showplaying:
-                        openwindow = '《'+openwindow+'》'
+                        if config['SpecialUndefined'] == 'yes':
+                            openwindow = '《'+openwindow+'》'
 
                     
 
@@ -340,20 +350,37 @@ if pyuac.isUserAdmin():
                     if any(needs_update):
                         update = True
 
+                    if config['AlwaysUpdate'] == 'yes':
+                        update = True
+
 
                     if dataName:
-                        print(dataName+' '+str(looptime))
-                        try:
-                            playtime.write(str(dataName), looptime)
-                        except:
-                            pass
-                        
+                        if config['LogTime'] == 'yes':
+                            print(dataName+' '+str(looptime))
+                            try:
+                                playtime.write(str(dataName), looptime)
+                            except:
+                                pass
+                            
                     
                     #resets timer every time a new application is showed    
                     #if globaldetails != openwindow:
                         #start_time = time.time()
 
                     #if update is True, update the RPC
+                    if config['Button'] == 'yes':
+                        if config['CustomButton'] == 'yes':
+                            buttons=[{
+                                "label": str(config['CustomLabel']), #set button label
+                                "url": str(config['CustomUrl']) #set button link
+                                }]
+                        else:
+                            buttons=[{
+                                "label": "ʟᴀɴᴛᴇʀɴ.ʟᴏʟ", #set button label
+                                "url": "https://Lantern.LoL" #set button link
+                                }]
+                    else:
+                        buttons = None
                     if update:
                         #update connection to rpc server with all detail
                         RPC.update(
@@ -363,10 +390,7 @@ if pyuac.isUserAdmin():
                             large_text=largetext, #set large image text
                             small_image=image, #set small image
                             small_text=state, #set small image text
-                            buttons=[{
-                                "label": "ʟᴀɴᴛᴇʀɴ.ʟᴏʟ", #set button label
-                                "url": "https://Lantern.LoL" #set button link
-                                }]
+                            buttons=buttons
                             )
 
                         #set the last update to check in the next loop
