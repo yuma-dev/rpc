@@ -1,12 +1,8 @@
-import logging,sys,ctypes
+import logging,sys,ctypes,pyuac
 
-def is_admin():
-    try:
-        return ctypes.windll.shell32.IsUserAnAdmin()
-    except:
-        return False
 
-if is_admin():
+
+if pyuac.isUserAdmin():
     
 
     class LogFile(object):
@@ -25,11 +21,10 @@ if is_admin():
     logging.basicConfig(level=logging.DEBUG, filename='logs/logging.log', format = '%(asctime)s | %(levelname)s  -  %(message)s')
     try:
         #imports
-        import wx.adv,wx,atexit,psutil,threading,time,win32gui,win32process,os,traceback,json,easygui , tkinter as tk
+        import wx.adv,wx,atexit,psutil,threading,time,win32gui,win32process,os,traceback,json,easygui , tkinter as tk,pypresence
         from modules import playtime,readable,yasuo,officialAddons,customAddons #custom module for client data
         from datetime import datetime #get the current time for logging errors
         from pynput import keyboard #check for hotkey
-        from pypresence import Presence #update local discord rich presence
         from PySide2 import QtWidgets, QtGui
         from SwSpotify import spotify #get playing track info
         from win10toast import ToastNotifier #push desktop notifications
@@ -269,7 +264,7 @@ if is_admin():
                 
                 #connect to application via id on pipe 0
                 client_id = '828958778866270238' #set discord application id
-                RPC = Presence(client_id) #set the client with id and define what pipe
+                RPC = pypresence.Presence(client_id) #set the client with id and define what pipe
                 RPC.connect() #connect to the client
 
                 while True:  #infinite loop 
@@ -391,13 +386,19 @@ if is_admin():
                         
             #if an error occurs while running the loop (mostly rpc not being able to connect to discord due to discord being closed)
             except Exception as e:
-                exc_type, exc_obj, exc_tb = sys.exc_info()
-                fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-                logging.critical(e) #print error message(for debug)
-                logging.critical(f'DEBUG : {exc_type} {fname} in line {exc_tb.tb_lineno}') #print
-                easygui.msgbox(f"DEBUG : {exc_type} {fname} in line {exc_tb.tb_lineno}\n{e}", "RPC Error")
-                exit()
+                print(f"'{e}'")
+                if str(e) == "Pipe Not Found - Is Discord Running?":
+                    logging.critical("Discord is not open yet, trying again in 15 seconds...")
+                    time.sleep(15)
+                    continue
+                else:
+                    exc_type, exc_obj, exc_tb = sys.exc_info()
+                    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+                    logging.critical(e) #print error message(for debug)
+                    logging.critical(f'DEBUG : {exc_type} {fname} in line {exc_tb.tb_lineno}') #print
+                    easygui.msgbox(f"DEBUG : {exc_type} {fname} in line {exc_tb.tb_lineno}\n{e}", "RPC Error")
+                    exit()
     except Exception as e:
         logging.critical(e)
 else:
-    ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    pyuac.runAsAdmin()

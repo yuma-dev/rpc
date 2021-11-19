@@ -58,10 +58,6 @@ def moduleDownloads():
             print("installing "+module)
             os.system(f"py -m pip install {module}")
 
-        
-        input('Neue Module wurden installiert, das script bitte neustarten...')
-        exit()
-
 def killRpc():
     os.system("taskkill /IM pythonw.exe /F")
 

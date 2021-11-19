@@ -17,3 +17,4 @@ shutil
 easygui
 winshell
 win32
+pyuac

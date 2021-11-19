@@ -1,5 +1,5 @@
-2.1.8
-- fixed installer
-- fixed playtime
-- fixed updater
-- cleared log
+2.1.9
+- fixed uac
+- fixed discord not being open closing the script
+- added pyuac module
+- fixed updater uselessly restarting after installing new modules
