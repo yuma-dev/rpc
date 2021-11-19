@@ -12,11 +12,26 @@ def is_running(processName):
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             pass
     return False
+def closeRPC():
+    if is_running("pythonw.exe"):
+        rpcOpen = True
+        inp = input("CLOSE pythonw.exe(probably rpc) BEFORE UPDATING!\nClose? [Y/N]\n \nUSER: ")
+        if inp.lower() == 'y':
+            os.system('py killrpc.py')
+            print('Closing...')
+            while rpcOpen:
+                if is_running("pythonw.exe"):
+                    rpcOpen = True
+                    time.sleep(0.5)
+                    
+                else:
+                    rpcOpen = False
+                    print('closed!')
+                    return
+        else:
+            exit()
 
-if is_running("pythonw.exe"):
-    input("CLOSE RPC BEFORE UPDATING!")
-    exit()
-
+closeRPC()
 
 for line in file:
     line = line.decode("utf-8")
@@ -58,6 +73,10 @@ def moduleDownloads():
             print("installing "+module)
             os.system(f"py -m pip install {module}")
 
+        
+        input('Neue Module wurden installiert, das script bitte neustarten...')
+        exit()
+
 def killRpc():
     os.system("taskkill /IM pythonw.exe /F")
 
@@ -73,6 +92,13 @@ def Update():
         if file in ['customAddons.py']:
             print(f"Moving {file} to temp")
             os.rename(os.getcwd()+"\\modules\\"+file, os.getcwd()+"\\temp\\"+file)
+            time.sleep(0.1)
+
+    for file in os.listdir(os.getcwd()+"\\"+"data"):
+        
+        if file in ['database.json']:
+            print(f"Moving {file} to temp")
+            os.rename(os.getcwd()+"\\data\\"+file, os.getcwd()+"\\temp\\"+file)
             time.sleep(0.1)
 
 
@@ -145,11 +171,22 @@ def Update():
             time.sleep(0.1)
 
 
-    print('Moving saved customAddons.py back')
+    print('Removing downloaded database')    
+    for file in os.listdir(os.getcwd()+"\\data"):
+        if file in ['database.json']:
+            os.remove(os.getcwd()+"\\data\\"+file)
+            time.sleep(0.1)
+
+
+    print('Moving saved customAddons.py and database back')
     for file in os.listdir(os.getcwd()+"\\temp"):
         if file in ['customAddons.py']:
             print(f"Moving {file} to temp")
             os.rename(os.getcwd()+"\\temp\\"+file, os.getcwd()+"\\modules\\"+file)
+            time.sleep(0.1)
+        if file in ['database.json']:
+            print(f"Moving {file} to temp")
+            os.rename(os.getcwd()+"\\temp\\"+file, os.getcwd()+"\\data\\"+file)
             time.sleep(0.1)
 
 
@@ -158,7 +195,7 @@ def Update():
 
 
     if changelog:
-        input(' \n \n \n \n '+changelog)
+        input(f' \n \n \n \nv{rawCloudVersion} Changelog:\n'+changelog)
         exit()
     
 
