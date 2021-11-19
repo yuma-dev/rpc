@@ -1,2 +1,4 @@
 .ignore
 push.py
+data/database.json
+logs/logging.log

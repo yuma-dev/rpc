@@ -1,8 +1,10 @@
-import logging,sys,ctypes,pyuac
+import logging,sys,ctypes,pyuac,configparser
 
+config = configparser.ConfigParser()
+config.read("data/config.ini")
+config = config['rpc']
 
-
-if pyuac.isUserAdmin():
+if config['AdminMode'] == 'no' or pyuac.isUserAdmin() == True:
     
 
     class LogFile(object):
@@ -21,7 +23,7 @@ if pyuac.isUserAdmin():
     logging.basicConfig(level=logging.DEBUG, filename='logs/logging.log', format = '%(asctime)s | %(levelname)s  -  %(message)s')
     try:
         #imports
-        import wx.adv,wx,atexit,psutil,threading,time,win32gui,win32process,os,traceback,json,easygui , tkinter as tk,pypresence,configparser
+        import wx.adv,wx,atexit,psutil,threading,time,win32gui,win32process,os,traceback,json,easygui , tkinter as tk,pypresence
         from modules import playtime,readable,yasuo,officialAddons,customAddons #custom module for client data
         from datetime import datetime #get the current time for logging errors
         from pynput import keyboard #check for hotkey
@@ -33,9 +35,6 @@ if pyuac.isUserAdmin():
         from tkinter.scrolledtext import *
 
         #DEFAULTING
-        config = configparser.ConfigParser()
-        config.read("data/config.ini")
-        config = config['rpc']
         icon_path = "sprites/icon.ico"
         toast = ToastNotifier()
         global globaldetails,globalstate,globallarge_image,globallarge_text,globalsmall_image,globalsmall_text,loops,looptime
