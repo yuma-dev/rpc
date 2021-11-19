@@ -1,2 +1,5 @@
-2.1.7
-- fixed database
+2.1.8
+- fixed installer
+- fixed playtime
+- fixed updater
+- cleared log

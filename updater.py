@@ -30,18 +30,37 @@ with open(os.getcwd()+"\\"+'about.txt', "r") as file:
             rawBaseVersion = line.split("=")[1]
             baseVersion = line.split("=")[1].replace(".", "")
 
-def moduleUpdates(file):
+def moduleDownloads():
     import os,time,sys
+    url = 'https://raw.githubusercontent.com/yuma-dev/rpc/main/modules.txt'
     try:
-        with open(file) as f:
-            for module in f.readlines():
-                __import__(module.strip())
-    except ImportError as e:
+        import urllib.request
+        print("imported urllib.request")
+    except ImportError:
+        print("importerror urllib")
+        os.system('py -m pip install urllib')
+        input('Installed important script, please restart')
+    modules = urllib.request.urlopen(url).readlines()
+    try:
+        for line in modules:
+            
+            module = line.decode('utf-8').strip()
+
+            exec("import "+module)
+            print("alread installed "+module)
+    except Exception as e:
+        os.system('py -m pip install --upgrade setuptools')
         print(e)
-        with open(file) as f:
-            for module in f.readlines():
-                os.system(f"py -m pip install {module.strip()}")
-    return "Finished"
+        for line in modules:
+            module = line.decode('utf-8').strip()
+            if module == 'wx':
+                module = 'wxpython'
+            print("installing "+module)
+            os.system(f"py -m pip install {module}")
+
+        
+        input('Neue Module wurden installiert, das script bitte neustarten...')
+        exit()
 
 def killRpc():
     os.system("taskkill /IM pythonw.exe /F")
@@ -49,6 +68,7 @@ def killRpc():
 def Update():
     changelog = None
     killRpc()
+    moduleDownloads()
     os.mkdir("temp")
 
 
@@ -102,15 +122,10 @@ def Update():
                 os.remove(os.getcwd()+"\\rpc-main\\"+file)
                 time.sleep(0.3)
 
-            if file == 'modules.txt':
 
-                if moduleUpdates(os.getcwd()+"\\rpc-main\\"+file) == 'Finished':
-                    os.remove(os.getcwd()+"\\rpc-main\\"+file)
-                    print(f"Removing {file} after finishing")
-                    time.sleep(0.3)
 
             else:
-                if file not in ['modules.txt','changelog.txt']:
+                if file not in ['changelog.txt']:
                     print(f"Removing {file}")
                     os.remove(os.getcwd()+"\\rpc-main\\"+file)
                     time.sleep(0.1)

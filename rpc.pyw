@@ -348,7 +348,10 @@ if is_admin():
 
                     if dataName:
                         print(dataName+' '+str(looptime))
-                        playtime.write(str(dataName), looptime)
+                        try:
+                            playtime.write(str(dataName), looptime)
+                        except:
+                            pass
                         
                     
                     #resets timer every time a new application is showed    

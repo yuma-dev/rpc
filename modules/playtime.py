@@ -6,8 +6,12 @@ import json
 def verifyGame(variable):
     if isinstance(variable, str):
         string = True
-    if variable.len() > 1:
+    if len(variable) > 1:
         size = True
+    if size is True and string is True:
+        return True
+    else:
+        return False
     
 
 def verifyTime(variable):
@@ -15,7 +19,10 @@ def verifyTime(variable):
         integer = True
     if variable > 0:
         size = True
-
+    if size is True and integer is True:
+        return True
+    else:
+        return False
 
 def write(game, time):
     if verifyGame(game) and verifyTime(time):
