@@ -1,2 +1,2 @@
-2.2.1
-- added config system
+2.2.2
+- fixed spotify bug with it being a local module

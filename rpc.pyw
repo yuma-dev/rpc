@@ -28,7 +28,7 @@ if config['AdminMode'] == 'no' or pyuac.isUserAdmin() == True:
         from datetime import datetime #get the current time for logging errors
         from pynput import keyboard #check for hotkey
         from PySide2 import QtWidgets, QtGui
-        from SwSpotify import spotify #get playing track info
+        from RpcSpotify import spotify #get playing track info
         from win10toast import ToastNotifier #push desktop notifications
         from ctypes import windll
         from youtube_search import YoutubeSearch

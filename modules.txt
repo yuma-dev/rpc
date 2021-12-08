@@ -9,7 +9,6 @@ json
 pynput
 pypresence
 PySide2
-SwSpotify
 win10toast
 tkinter
 youtube_search
