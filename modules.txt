@@ -17,3 +17,4 @@ easygui
 winshell
 win32
 pyuac
+pick
